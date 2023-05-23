@@ -2,8 +2,8 @@ package FAST
 
 import scala.concurrent.duration._
 import io.gatling.core.Predef._
-import io.gatling.core.session
 import io.gatling.http.Predef._
+import io.gatling.core.session._
 
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -70,10 +70,10 @@ object ObjectFAST {
     .exec(session => session.set("filePath", filePath))
     .exec(session => {
       val xmlContenu = session("filePath").as[String]
-        .replaceAll("\\$\\{code_magasin}", session("code_magasin").as[String])
-        .replaceAll("\\$\\{numero_caisse}", session("numero_caisse").as[String])
-        .replaceAll("\\$\\{numero_sequence}", session("numero_sequence").as[String])
-        .replaceAll("\\$\\{nextDateTime}", session("nextDateTime").as[String])
+        .replace("${code_magasin}", session("code_magasin").as[String])
+        .replace("${numero_caisse}", session("numero_caisse").as[String])
+        .replace("${numero_sequence}", session("numero_sequence").as[String])
+        .replace("${nextDateTime}", session("nextDateTime").as[String])
       session.set("xmlContenu", xmlContenu)
     })
     .exec(http("Upload POSLog XML")
