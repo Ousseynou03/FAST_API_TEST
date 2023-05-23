@@ -5,14 +5,14 @@
         xmlns="http://www.nrf-arts.org/IXRetail/namespace/">
     <Transaction>
         <BusinessUnit>
-            <UnitID TypeCode="RetailStore">${code_magasin}</UnitID>
+            <UnitID TypeCode="RetailStore">{{${code_magasin}}}</UnitID>
         </BusinessUnit>
         <Channel>
             <ChannelID>STORE</ChannelID>
             <TouchPointID>POS</TouchPointID>
         </Channel>
-        <WorkstationID>${numero_caisse}</WorkstationID>
-        <SequenceNumber>${numero_sequence}</SequenceNumber>
+        <WorkstationID>{{${numero_caisse}}}</WorkstationID>
+        <SequenceNumber>{{${numero_sequence}}}</SequenceNumber>
         <OperatorID>156994</OperatorID>
         <RetailTransaction>
             <LineItem EntryMethod="Scanned">
@@ -71,6 +71,6 @@
                 <CustomerID>{{client_id:407190620}}</CustomerID>
             </LoyaltyAccount>
         </RetailTransaction>
-        <EndDateTime>{{date_time:${nextDateTime}}</EndDateTime>
+        <EndDateTime>{{date_time:${nextDateTime}}}</EndDateTime>
     </Transaction>
 </POSLog>
